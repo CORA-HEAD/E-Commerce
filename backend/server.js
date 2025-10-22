@@ -19,9 +19,7 @@ app.use(express.json());
 // app.use('/api/products', productRoutes);
 // app.use('/api/cart', cartRoutes);
 // app.use('/api/orders', orderRoutes);
-
 const PORT = process.env.PORT || 5000;
-
 mongoose
     .connect(process.env.MONGO_URI)
     .then(() => {
