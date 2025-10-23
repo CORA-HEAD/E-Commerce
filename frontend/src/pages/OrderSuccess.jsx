@@ -16,42 +16,47 @@ export default function OrderSuccess() {
   const [sessionId, setSessionId] = useState(null);
   const calledRef = useRef(false); // ensures single API call
 
-  // Extract session ID and confirm payment
+  // // Extract session ID and confirm payment
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const sid = params.get("session_id");
-    setSessionId(sid);
+  const params = new URLSearchParams(location.search);
+  const sid = params.get("session_id");
+  setSessionId(sid);
 
-    if (!sid) {
-      showToast("No session id provided", "error");
-      setLoading(false);
-      return;
-    }
+  if (!sid) {
+    showToast("No session id provided", "error");
+    setLoading(false);
+    return;
+  }
 
-    if (calledRef.current) return;
-    calledRef.current = true;
+  if (calledRef.current) return;
+  calledRef.current = true;
 
-    const confirmPayment = async () => {
-      try {
-        const res = await API.get(`/stripe/confirm/${sid}`);
-        setOrder(res.data);
+  const confirmPayment = async () => {
+    try {
+      const res = await API.get(`/stripe/confirm/${sid}`);
+      console.log("Stripe session response:", res);       // ✅ log full response
+      console.log("Stripe session data:", res.data);      // ✅ log just the data
 
-        // clear cart after successful order
-        if (clearCart) {
-          try { await clearCart(); } catch {}
-        }
+      setOrder(res.data);
 
-        showToast("Order confirmed — thank you!", "success");
-      } catch (err) {
-        console.error("confirm error", err);
-        showToast(err?.response?.data?.message || "Unable to confirm order", "error");
-      } finally {
-        setLoading(false);
+      // clear cart after successful order
+      if (clearCart) {
+        try { await clearCart(); } catch {}
       }
-    };
 
-    confirmPayment();
-  }, [location.search, clearCart, showToast]);
+      showToast("Order confirmed — thank you!", "success");
+    } catch (err) {
+      console.error("confirm error", err);
+      console.log("Error response:", err?.response);      // ✅ log full error response
+      showToast(err?.response?.data?.message || "Unable to confirm order", "error");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  confirmPayment();
+}, [location.search, clearCart, showToast]);
+
 
   // Retry confirmation
   const handleRetry = () => {
