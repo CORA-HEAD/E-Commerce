@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Product = require('../models/Product');
 const connectDB = require('../config/db');
 
-// 🛍️ Expanded sample products with HD images
+// Expanded sample products with HD images
 const products = [
   {
     name: 'Classic Cotton T-Shirt',
