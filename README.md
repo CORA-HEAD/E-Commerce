@@ -175,21 +175,30 @@ ZIP: any 5 digits (e.g., 12345)
 
 ---
 
-## 📦 Example API Routes
-
+## Example API Routes
+### Authentication Routes — `/api/auth`
 | Method | Endpoint | Description |
 |---------|-----------|-------------|
-| `POST` | `/api/auth/register` | Register a user |
-| `POST` | `/api/auth/login` | Login a user |
-| `GET` | `/api/products` | Get all products |
-| `POST` | `/api/cart/add` | Add item to cart |
-| `POST` | `/api/stripe/create-checkout-session` | Create Stripe checkout session |
-| `GET` | `/api/stripe/confirm/:sessionId` | Confirm payment and create order |
+| `POST` | `/api/auth/register` | Register a new user |
+| `POST` | `/api/auth/login` | Login user and receive JWT |
 
----
+### Product Routes — `/api/products`
+| Method | Endpoint | Description |
+|---------|-----------|-------------|
+| `GET` | `/api/products` | Fetch all available products |
 
-## Deployment Notes
-- Set `CLIENT_URL` to your deployed frontend URL.
-- Use **live Stripe keys** for production payments.
-- For real transactions, implement **Stripe Webhooks** for secure order verification.
+### Cart Routes — `/api/cart`
+| Method | Endpoint | Description |
+|---------|-----------|-------------|
+| `POST` | `/api/cart/add` | Add an item to the user’s cart |
 
+### Stripe Payment Routes — `/api/stripe`
+| Method | Endpoint | Description |
+|---------|-----------|-------------|
+| `POST` | `/api/stripe/create-checkout-session` | Create Stripe Checkout Session |
+| `GET` | `/api/stripe/confirm/:sessionId` | Confirm payment and create order in DB |
+
+### Order Routes — `/api/orders`
+| Method | Endpoint | Description |
+|---------|-----------|-------------|
+| `GET` | `/api/orders` | Retrieve user’s orders (requires JWT auth) |
