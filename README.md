@@ -13,6 +13,7 @@ It supports user authentication, product browsing, cart management, checkout, an
 - Context API (Auth, Cart, Toast)
 - Tailwind CSS
 - Stripe Checkout (Test Mode)
+- Deployed on Vercel
 
 ### **Backend**
 - Node.js / Express
@@ -20,6 +21,7 @@ It supports user authentication, product browsing, cart management, checkout, an
 - JWT Authentication
 - Stripe API (Test Mode)
 - dotenv, cors, bcrypt, jsonwebtoken
+- Deployed on Render
 
 ---
 
@@ -106,6 +108,7 @@ STRIPE_SECRET_TEST= YOUR API
 npm run dev
 ```
 Backend runs on → [http://localhost:5001](http://localhost:5001)
+Production Backend: https://e-commerce-8ys8.onrender.com
 
 ---
 
@@ -125,6 +128,7 @@ VITE_API_URL=http://localhost:5001/api
 npm run dev
 ```
 Frontend runs on → [http://localhost:5173](http://localhost:5173)
+Production Frontend: https://your-frontend-url.vercel.app
 
 ---
 
@@ -160,6 +164,7 @@ ZIP: any 5 digits (e.g., 12345)
 ✅ Toast Notifications for Feedback  
 ✅ Responsive (Mobile + Desktop)  
 ✅ Order Confirmation & Stock Update  
+✅ MongoDB Atlas for Database
 
 ---
 
