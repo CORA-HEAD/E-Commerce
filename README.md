@@ -128,7 +128,7 @@ VITE_API_URL=http://localhost:5001/api
 npm run dev
 ```
 Frontend runs on → [http://localhost:5173](http://localhost:5173)
-Production Frontend: https://your-frontend-url.vercel.app
+Production Frontend: https://e-commerce-one-peach-52.vercel.app/
 
 ---
 
